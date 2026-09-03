@@ -1,149 +1,107 @@
-const certificateSelect =
-    document.getElementById(
-        "certificateSelect"
+const certificateSelect = document.getElementById("certificateSelect");
+const generateQRBtn = document.getElementById("generateQRBtn");
+const qrContainer = document.getElementById("qrcode");
+const qrUrl = document.getElementById("qrUrl");
+
+
+// ========================================
+// LOAD CERTIFICATES INTO DROPDOWN
+// ========================================
+
+Object.keys(certificates).forEach((certificateId) => {
+
+    const certificate = certificates[certificateId];
+
+    const option = document.createElement("option");
+
+    option.value = certificateId;
+
+    option.textContent =
+        `${certificate.certificateName} - ${certificate.certificateNumber}`;
+
+    certificateSelect.appendChild(option);
+
+});
+
+
+// ========================================
+// GENERATE QR CODE
+// ========================================
+
+generateQRBtn.addEventListener("click", () => {
+
+    const certificateId = certificateSelect.value;
+
+
+    // ========================================
+    // CREATE CORRECT CERTIFICATE URL
+    // ========================================
+
+    const certificateURL = new URL(
+        "certificate.html",
+        window.location.href
+    );
+
+    certificateURL.searchParams.set(
+        "id",
+        certificateId
     );
 
 
-const generateQRBtn =
-    document.getElementById(
-        "generateQRBtn"
-    );
+    // Convert URL object to text
+
+    const finalURL = certificateURL.toString();
 
 
-const qrContainer =
-    document.getElementById(
-        "qrcode"
-    );
+    console.log("QR Certificate URL:", finalURL);
 
 
-const qrUrl =
-    document.getElementById(
-        "qrUrl"
-    );
+    // ========================================
+    // REMOVE OLD QR
+    // ========================================
+
+    qrContainer.innerHTML = "";
 
 
+    // ========================================
+    // GENERATE NEW QR
+    // ========================================
 
-/*
-========================================
-LOAD CERTIFICATES INTO DROPDOWN
-========================================
-*/
+    new QRCode(qrContainer, {
 
+        text: finalURL,
 
-Object.keys(certificates).forEach(
-    function (certificateId) {
+        width: 250,
 
+        height: 250,
 
-        const certificate =
-            certificates[certificateId];
+        colorDark: "#000000",
 
+        colorLight: "#ffffff",
 
-        const option =
-            document.createElement("option");
+        correctLevel: QRCode.CorrectLevel.H
 
-
-        option.value =
-            certificateId;
+    });
 
 
-        option.textContent =
-            certificate.certificateName
-            + " - "
-            + certificate.certificateNumber;
+    // ========================================
+    // SHOW GENERATED URL
+    // ========================================
 
+    qrUrl.innerHTML = `
 
-        certificateSelect.appendChild(
-            option
-        );
+        <p><strong>Certificate Verification URL:</strong></p>
 
+        <div class="url-box">
 
-    }
-);
+            <a href="${finalURL}" target="_blank">
 
+                ${finalURL}
 
+            </a>
 
-/*
-========================================
-GENERATE QR CODE
-========================================
-*/
+        </div>
 
+    `;
 
-generateQRBtn.addEventListener(
-    "click",
-    function () {
-
-
-        const certificateId =
-            certificateSelect.value;
-
-
-
-        /*
-        Website URL
-        */
-
-
-        const certificateURL =
-
-            window.location.origin
-            +
-            window.location.pathname.replace(
-                "qr-generator.html",
-                "certificate.html"
-            )
-            +
-            "?id="
-            +
-            certificateId;
-
-
-
-        /*
-        Remove old QR
-        */
-
-
-        qrContainer.innerHTML =
-            "";
-
-
-
-        /*
-        Generate QR
-        */
-
-
-        new QRCode(
-            qrContainer,
-            {
-                text: certificateURL,
-
-                width: 250,
-
-                height: 250
-            }
-        );
-
-
-
-        /*
-        Display URL
-        */
-
-
-        qrUrl.innerHTML =
-
-            `
-            <p>
-                Certificate Verification URL:
-            </p>
-
-            <div class="url-box">
-                ${certificateURL}
-            </div>
-            `;
-
-
-    }
-);
+});
