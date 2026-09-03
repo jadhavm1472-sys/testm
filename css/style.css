@@ -132,47 +132,85 @@ body {
    TITLE
 ======================================== */
 
+/* ========================================
+   CERTIFICATE TITLE
+======================================== */
+
 .title-section {
 
-    margin-top:
-        18px;
+    width: 100%;
+
+    margin-top: 18px;
+
+    display: flex;
+
+    justify-content: center;
 
 }
 
 
-.title {
+/* Icon + text container */
 
-    display:
-        flex;
+.certificate-title {
 
-    align-items:
-        center;
+    display: flex;
 
-    justify-content:
-        center;
+    align-items: center;
 
-    gap:
-        6px;
+    justify-content: center;
 
-    color:
-        #3f6282;
-
-    font-size:
-        17px;
-
-    font-weight:
-        700;
-
-    text-align:
-        center;
+    gap: 4px;
 
 }
 
+
+/* ========================================
+   CERTIFICATE ICON
+======================================== */
 
 .certificate-icon {
 
-    font-size:
-        24px;
+    width: 32px;
+
+    height: 32px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+}
+
+
+.certificate-icon svg {
+
+    width: 32px;
+
+    height: 32px;
+
+    display: block;
+
+}
+
+
+/* ========================================
+   TITLE TEXT
+======================================== */
+
+.certificate-title-text {
+
+    color: #365777;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    line-height: 1.4;
+
+    white-space: nowrap;
 
 }
 
