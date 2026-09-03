@@ -944,76 +944,66 @@ let currentCertificate = null;
 
 /* =====================================================
    STORAGE
-===================================================== */
+   ===================================================== */
 
-async function storageSet(key, value) {
+/*
+   Certificate data is stored directly in the QR code.
+   No database or localStorage is required for QR verification.
+*/
 
-    /*
-       Use original shared storage if available.
-    */
+function encodeCertificateData(certificate) {
+    const json = JSON.stringify(certificate);
+    const bytes = new TextEncoder().encode(json);
 
-    if (
-        window.storage &&
-        typeof window.storage.set === "function"
-    ) {
+    let binary = "";
+    bytes.forEach(function(byte) {
+        binary += String.fromCharCode(byte);
+    });
 
-        return await window.storage.set(
-            key,
-            value,
-            true
-        );
-
-    }
-
-
-    /*
-       Normal browser fallback.
-    */
-
-    localStorage.setItem(
-        key,
-        value
-    );
-
-    return {
-        ok: true
-    };
-
+    return btoa(binary)
+        .replace(/\\+/g, "-")
+        .replace(/\\//g, "_")
+        .replace(/=+$/g, "");
 }
 
+function decodeCertificateData(encoded) {
+    const base64 = encoded
+        .replace(/-/g, "+")
+        .replace(/_/g, "/");
 
-async function storageGet(key) {
+    const padded =
+        base64 + "=".repeat((4 - base64.length % 4) % 4);
 
-    if (
-        window.storage &&
-        typeof window.storage.get === "function"
-    ) {
+    const binary = atob(padded);
 
-        return await window.storage.get(
-            key,
-            true
-        );
+    const bytes = Uint8Array.from(
+        binary,
+        function(char) {
+            return char.charCodeAt(0);
+        }
+    );
 
-    }
+    return JSON.parse(new TextDecoder().decode(bytes));
+}
 
+function showCertificate(record) {
+    currentCertificate = record;
 
-    const value =
-        localStorage.getItem(key);
+    document.getElementById("cert-id").textContent = record.id;
+    document.getElementById("cert-name").textContent = record.name;
+    document.getElementById("applicant-name").textContent = record.applicant;
+    document.getElementById("gramsevak-name").textContent = record.gramsevak;
+    document.getElementById("cert-date").textContent = record.date;
 
+    document.getElementById("form-panel").style.display = "none";
 
-    if (value === null) {
+    document
+        .getElementById("certificate-view")
+        .classList.add("show");
 
-        throw new Error(
-            "Certificate not found"
-        );
-
-    }
-
-
-    return {
-        value: value
-    };
-
+    document
+        .getElementById("qr-section")
+        .classList.remove("show");
 }
 
 
@@ -1197,90 +1187,17 @@ async function generateCertificate() {
 
 
     /* =================================================
-       SAVE
-    ================================================== */
-
-    try {
-
-        await storageSet(
-            "cert:" + inputId,
-            JSON.stringify(
-                currentCertificate
-            )
-        );
-
-    }
-
-    catch (error) {
-
-        console.error(error);
-
-        alert(
-            "दाखला save करताना समस्या आली."
-        );
-
-        return;
-
-    }
-
-
-    /* =================================================
-       PUT DATA INTO CERTIFICATE VIEW
-    ================================================== */
-
-    document.getElementById(
-        "cert-id"
-    ).textContent =
-        currentCertificate.id;
-
-
-    document.getElementById(
-        "cert-name"
-    ).textContent =
-        currentCertificate.name;
-
-
-    document.getElementById(
-        "applicant-name"
-    ).textContent =
-        currentCertificate.applicant;
-
-
-    document.getElementById(
-        "gramsevak-name"
-    ).textContent =
-        currentCertificate.gramsevak;
-
-
-    document.getElementById(
-        "cert-date"
-    ).textContent =
-        currentCertificate.date;
-
-
-    /* =================================================
-       HIDE FORM
-    ================================================== */
-
-    document
-        .getElementById("form-panel")
-        .style.display = "none";
-
-
-    /* =================================================
        SHOW CERTIFICATE
-    ================================================== */
+       ================================================== */
 
-    document
-        .getElementById("certificate-view")
-        .classList.add("show");
+    showCertificate(currentCertificate);
 
-
-    /*
+    /* =================================================
        QR is deliberately NOT generated here.
-
        User must click Generate QR.
-    */
+       ================================================== */
+
+
 
 
     document
@@ -1360,6 +1277,24 @@ function generateQR() {
 
 
     /*
+        Verification URL.
+
+        The complete certificate data is encoded directly
+        into the QR code, so it works on any phone without
+        localStorage or a database.
+    */
+
+    const encodedData =
+        encodeCertificateData(currentCertificate);
+
+    const verifyUrl =
+        window.location.origin +
+        window.location.pathname +
+        "?data=" +
+        encodedData;
+
+
+
        Show URL.
     */
 
@@ -1748,39 +1683,34 @@ document
     });
 
 
-
     /* =====================================================
-       AUTO VERIFY FROM QR URL
+       AUTO SHOW CERTIFICATE FROM QR DATA
        ===================================================== */
 
-    window.addEventListener("DOMContentLoaded", async function () {
+    window.addEventListener("DOMContentLoaded", function () {
 
-        const params = new URLSearchParams(window.location.search);
-        const verifyId = params.get("verify");
+        const encodedData =
+            new URLSearchParams(window.location.search).get("data");
 
-        if (!verifyId) {
+        if (!encodedData) {
             return;
         }
 
         try {
-            const response = await storageGet("cert:" + verifyId);
-            const record = JSON.parse(response.value);
+            const record = decodeCertificateData(encodedData);
 
-            document.getElementById("form-panel").style.display = "none";
+            if (
+                !record ||
+                !record.id ||
+                !record.name ||
+                !record.applicant ||
+                !record.gramsevak ||
+                !record.date
+            ) {
+                throw new Error("Invalid certificate data");
+            }
 
-            document
-                .getElementById("certificate-view")
-                .classList.add("show");
-
-            document.getElementById("cert-id").textContent = record.id;
-            document.getElementById("cert-name").textContent = record.name;
-            document.getElementById("applicant-name").textContent = record.applicant;
-            document.getElementById("gramsevak-name").textContent = record.gramsevak;
-            document.getElementById("cert-date").textContent = record.date;
-
-            document
-                .getElementById("qr-section")
-                .classList.remove("show");
+            showCertificate(record);
 
         } catch (error) {
             console.error(error);
@@ -1800,21 +1730,21 @@ document
                         color:#c62828;
                         font-weight:700;
                     ">
-                        ✕ दाखला सापडला नाही
+                        ✕ अवैध QR Code
                         <br>
                         <span style="
                             font-size:10px;
                             font-weight:400;
                             color:#555;
                         ">
-                            हा QR Code वैध नाही किंवा दाखला उपलब्ध नाही.
+                            QR Code मधील दाखला माहिती वैध नाही.
                         </span>
                     </div>
                 </div>
             `;
         }
-    });
 
+    });
 
 </script>
 
