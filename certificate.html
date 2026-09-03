@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="mr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>प्रमाणपत्र सत्यापन</title>
+
+
+    <!-- Marathi Font -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+</head>
+
+
+<body>
+
+
+    <div class="page">
+
+
+        <!-- ================= LOGO ================= -->
+
+        <div class="logo-container">
+
+            <div class="logo-box">
+
+                <div class="logo-text">
+
+                    <div class="logo-green">
+                        आपले
+                    </div>
+
+                    <div class="logo-orange">
+                        सरकार
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= TITLE ================= -->
+
+        <div class="title-section">
+
+            <div class="title">
+
+                <div class="certificate-icon">
+                    📜
+                </div>
+
+                <span>
+                    प्रमाणपत्र (दाखला) सत्यापन
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= LOCATION ================= -->
+
+        <div class="subtitle"
+             id="location">
+
+            ग्रामपंचायत माहिती
+
+        </div>
+
+
+
+        <!-- ================= CERTIFICATE CARD ================= -->
+
+        <div class="certificate-card"
+             id="certificateCard">
+
+
+            <div class="detail-row">
+
+                <span class="label">
+                    दाखला क्रमांक -
+                </span>
+
+                <span class="value"
+                      id="certificateNumber">
+                </span>
+
+            </div>
+
+
+
+            <div class="detail-row">
+
+                <span class="label">
+                    दाखल्याचे नाव -
+                </span>
+
+                <span class="value"
+                      id="certificateName">
+                </span>
+
+            </div>
+
+
+
+            <div class="detail-row">
+
+                <div class="label">
+
+                    दाखला मागणी केलेल्या व्यक्तीचे नाव -
+
+                </div>
+
+                <div class="value"
+                     id="applicantName">
+
+                </div>
+
+            </div>
+
+
+
+            <div class="detail-row">
+
+                <span class="label">
+                    ग्रामसेवकाचे नाव -
+                </span>
+
+                <span class="value"
+                      id="gramsevakName">
+                </span>
+
+            </div>
+
+
+
+            <div class="detail-row">
+
+                <span class="label">
+                    दाखला वितरण दिनांक -
+                </span>
+
+                <span class="value"
+                      id="issueDate">
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- ================= VERIFICATION MESSAGE ================= -->
+
+        <div class="message"
+             id="verificationMessage">
+
+        </div>
+
+
+
+        <!-- ================= BACK BUTTON ================= -->
+
+        <div class="button-container">
+
+            <button class="back-btn"
+                    onclick="goBack()">
+
+                Back
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- Certificate Static Data -->
+
+    <script src="js/certificates.js"></script>
+
+
+    <!-- Certificate Logic -->
+
+    <script src="js/certificate.js"></script>
+
+
+</body>
+
+</html>
