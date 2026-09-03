@@ -58,69 +58,34 @@ body {
 
 
 /* ========================================
- .logo-container {
+ /* ========================================
+   AAPLE SARKAR LOGO
+======================================== */
 
-    display:
-        flex;
+.logo-container {
 
-    justify-content:
-        center;
+    width: 100%;
 
-}
+    display: flex;
 
+    justify-content: center;
 
-.logo-box {
+    align-items: center;
 
-    width:
-        82px;
+    margin-top: 20px;
 
-    height:
-        54px;
-
-    border:
-        1px solid #9ab0a0;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
+    margin-bottom: 15px;
 
 }
 
 
-.logo-text {
+.aaple-sarkar-logo {
 
-    text-align:
-        center;
+    width: 80px;
 
-    font-weight:
-        700;
+    height: auto;
 
-    line-height:
-        15px;
-
-    font-size:
-        13px;
-
-}
-
-
-.logo-green {
-
-    color:
-        #4d876f;
-
-}
-
-
-.logo-orange {
-
-    color:
-        #e57c38;
+    display: block;
 
 }
 /* ========================================
