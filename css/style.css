@@ -62,71 +62,40 @@ padding:
 ======================================== */
 
 .logo-container {
-
-display:
-flex;
-
-justify-content:
-center;
-
+  display: flex;
+  justify-content: center;
 }
 
-
-.logo-box {
-
-width:
-82px;
-
-height:
-54px;
-
-border:
-1px solid #9ab0a0;
-
-display:
-flex;
-
-align-items:
-center;
-
-justify-content:
-center;
-
+.logo-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
 }
 
+.logo-emblem {
+  width: 52px;
+  height: 52px;
+}
 
 .logo-text {
-
-text-align:
-center;
-
-font-weight:
-700;
-
-line-height:
-15px;
-
-font-size:
-13px;
-
+  text-align: center;
+  font-weight: 700;
+  line-height: 15px;
+  font-size: 13px;
+  margin-top: 2px;
 }
 
+.logo-green { color: #4d876f; }
+.logo-orange { color: #e57c38; }
 
-.logo-green {
-
-color:
-#4d876f;
-
+.logo-underline {
+  width: 60px;
+  height: 2px;
+  margin-top: 3px;
+  background: linear-gradient(to right, #FF9933 33%, #ffffff 33%, #ffffff 66%, #128807 66%);
+  border: 1px solid #ddd;
 }
-
-
-.logo-orange {
-
-color:
-#e57c38;
-
-}
-
 
 /* ========================================
   TITLE
