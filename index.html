@@ -1,0 +1,1754 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ग्रामपंचायत दाखला सत्यापन</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+
+    width: 100%;
+    min-height: 100%;
+
+    background: #fff;
+
+    font-family:
+        "Noto Sans Devanagari",
+        Arial,
+        sans-serif;
+
+    color: #333;
+}
+
+body {
+    border-top: 3px solid #102f48;
+}
+
+.app {
+    width: 100%;
+    max-width: 390px;
+
+    min-height: calc(100vh - 3px);
+
+    margin: 0 auto;
+
+    padding: 18px 8px 30px;
+
+    background: #fff;
+}
+
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.logo-box {
+    width: 71px;
+    height: 43px;
+
+    margin: 0 auto 5px;
+
+    border: 1px solid #9acba9;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    color: #19863c;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    line-height: 12px;
+}
+
+.logo-box .orange {
+    color: #ed8a27;
+}
+
+
+/* =====================================================
+   TITLE
+===================================================== */
+
+.main-title {
+    text-align: center;
+
+    color: #07549c;
+
+    font-size: 15px;
+
+    line-height: 22px;
+
+    font-weight: 700;
+
+    margin: 0;
+
+    white-space: nowrap;
+}
+
+.certificate-icon {
+    display: inline-block;
+
+    width: 25px;
+    height: 21px;
+
+    margin-right: 4px;
+
+    vertical-align: -5px;
+
+    border: 2px solid #718bc0;
+
+    border-radius: 3px;
+
+    position: relative;
+}
+
+.certificate-icon::before {
+    content: "";
+
+    position: absolute;
+
+    width: 8px;
+    height: 8px;
+
+    left: 6px;
+    top: 3px;
+
+    border: 1px solid #718bc0;
+
+    border-radius: 50%;
+}
+
+.certificate-icon::after {
+    content: "";
+
+    position: absolute;
+
+    width: 12px;
+    height: 2px;
+
+    left: 4px;
+    bottom: 3px;
+
+    background: #718bc0;
+
+    box-shadow:
+        0 -4px 0 #718bc0;
+}
+
+
+/* =====================================================
+   LOCATION
+===================================================== */
+
+.location-line {
+    text-align: center;
+
+    margin-top: 5px;
+    margin-bottom: 14px;
+
+    color: #444;
+
+    font-size: 9px;
+
+    line-height: 15px;
+
+    font-weight: 500;
+}
+
+
+/* =====================================================
+   INPUT FORM
+===================================================== */
+
+.form-panel {
+    width: calc(100% - 22px);
+
+    margin: 0 auto;
+
+    padding: 14px;
+
+    background: #fff;
+
+    border: 1px solid #e0e0e0;
+
+    border-radius: 5px;
+
+    box-shadow:
+        0 3px 18px rgba(0, 0, 0, 0.05);
+}
+
+.form-title {
+    color: #07549c;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    margin-bottom: 13px;
+
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 11px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 5px;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    color: #333;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+
+    height: 34px;
+
+    padding: 6px 8px;
+
+    border: 1px solid #cfcfcf;
+
+    border-radius: 4px;
+
+    background: #fff;
+
+    font-family:
+        "Noto Sans Devanagari",
+        Arial,
+        sans-serif;
+
+    font-size: 10px;
+
+    color: #333;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+
+    border-color: #087ff5;
+
+    box-shadow:
+        0 0 0 2px rgba(8,127,245,.08);
+}
+
+.generate-certificate-btn {
+    width: 100%;
+
+    height: 34px;
+
+    margin-top: 4px;
+
+    border: 0;
+
+    border-radius: 4px;
+
+    background: #087ff5;
+
+    color: #fff;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.generate-certificate-btn:hover {
+    background: #0670d8;
+}
+
+
+/* =====================================================
+   CERTIFICATE VIEW
+===================================================== */
+
+.certificate-view {
+    display: none;
+}
+
+.certificate-view.show {
+    display: block;
+}
+
+.certificate-card {
+    width: calc(100% - 22px);
+
+    margin: 0 auto;
+
+    padding: 8px 10px 4px;
+
+    background: #fff;
+
+    border-radius: 4px;
+
+    box-shadow:
+        0 3px 18px rgba(0, 0, 0, 0.035);
+}
+
+.cert-row {
+    min-height: 38px;
+
+    padding: 7px 0;
+
+    border-bottom: 1px solid #e6e6e6;
+
+    color: #333;
+
+    font-size: 10px;
+
+    line-height: 16px;
+
+    font-weight: 500;
+}
+
+.cert-row:last-child {
+    border-bottom: none;
+}
+
+.cert-row.long {
+    min-height: 49px;
+}
+
+
+/* =====================================================
+   NOTE
+===================================================== */
+
+.note {
+    width: 100%;
+
+    margin-top: 29px;
+
+    text-align: center;
+
+    color: #444;
+
+    font-size: 8.5px;
+
+    line-height: 14px;
+
+    font-weight: 400;
+}
+
+
+/* =====================================================
+   ACTION BUTTONS
+===================================================== */
+
+.action-buttons {
+    display: flex;
+
+    justify-content: flex-start;
+
+    gap: 7px;
+
+    margin-top: 11px;
+
+    margin-left: 4px;
+}
+
+.back-btn,
+.qr-open-btn {
+    height: 24px;
+
+    padding: 2px 10px;
+
+    border: 0;
+
+    border-radius: 3px;
+
+    color: #fff;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    cursor: pointer;
+}
+
+.back-btn {
+    background: #087ff5;
+}
+
+.back-btn:hover {
+    background: #0670d8;
+}
+
+.qr-open-btn {
+    background: #19863c;
+}
+
+.qr-open-btn:hover {
+    background: #146d31;
+}
+
+
+/* =====================================================
+   QR PANEL
+===================================================== */
+
+.qr-section {
+    display: none;
+
+    width: calc(100% - 22px);
+
+    margin: 14px auto 0;
+
+    padding: 12px;
+
+    border: 1px solid #e0e0e0;
+
+    border-radius: 5px;
+
+    background: #fff;
+
+    box-shadow:
+        0 3px 15px rgba(0,0,0,.04);
+
+    text-align: center;
+}
+
+.qr-section.show {
+    display: block;
+}
+
+.qr-title {
+    color: #07549c;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    margin-bottom: 9px;
+}
+
+#qrcode {
+    width: 140px;
+    height: 140px;
+
+    padding: 7px;
+
+    margin: 0 auto 10px;
+
+    background: #fff;
+
+    border: 1px solid #ddd;
+
+    border-radius: 4px;
+}
+
+#qrcode canvas,
+#qrcode img {
+    width: 124px !important;
+    height: 124px !important;
+
+    display: block;
+}
+
+#qr-url {
+    display: block;
+
+    width: 100%;
+
+    padding: 6px;
+
+    margin-bottom: 9px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 3px;
+
+    background: #f8f8f8;
+
+    color: #555;
+
+    font-family: monospace;
+
+    font-size: 8px;
+
+    word-break: break-all;
+
+    text-align: left;
+}
+
+.qr-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 7px;
+}
+
+.qr-btn {
+    border: 0;
+
+    border-radius: 3px;
+
+    background: #087ff5;
+
+    color: #fff;
+
+    padding: 7px 11px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    cursor: pointer;
+}
+
+.qr-btn:hover {
+    background: #0670d8;
+}
+
+
+/* =====================================================
+   VERIFY
+===================================================== */
+
+.verify-panel {
+    display: none;
+
+    width: calc(100% - 22px);
+
+    margin: 15px auto 0;
+
+    padding: 12px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 5px;
+}
+
+.verify-panel.show {
+    display: block;
+}
+
+.verify-input {
+    width: 100%;
+
+    height: 32px;
+
+    padding: 6px 8px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 4px;
+
+    font-size: 10px;
+}
+
+.verify-btn {
+    margin-top: 7px;
+
+    border: 0;
+
+    border-radius: 4px;
+
+    background: #087ff5;
+
+    color: #fff;
+
+    padding: 7px 12px;
+
+    font-size: 10px;
+
+    cursor: pointer;
+}
+
+.verify-result {
+    margin-top: 10px;
+
+    font-size: 10px;
+
+    line-height: 16px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+
+    <!-- =================================================
+         HEADER
+    ================================================== -->
+
+    <div class="logo-box">
+        आपले<br>
+        <span class="orange">सरकार</span>
+    </div>
+
+
+    <h1 class="main-title">
+
+        <span class="certificate-icon"></span>
+
+        ग्रामपंचायत (दाखला) सत्यापन
+
+    </h1>
+
+
+    <div class="location-line">
+
+        ग्रामपंचायत - दहाणे, तालुका - वागळा, जिल्हा - नाशिक
+
+    </div>
+
+
+    <!-- =================================================
+         INPUT FORM
+         
+         THIS IS WHAT USER SEES FIRST
+    ================================================== -->
+
+    <div
+        class="form-panel"
+        id="form-panel"
+    >
+
+        <div class="form-title">
+            दाखला माहिती भरा
+        </div>
+
+
+        <!-- Certificate Number -->
+
+        <div class="form-group">
+
+            <label for="f-id">
+                दाखला क्रमांक
+            </label>
+
+            <input
+                type="text"
+                id="f-id"
+                placeholder="उदा. ५५५२८९९००१५६"
+            >
+
+        </div>
+
+
+        <!-- Certificate Name -->
+
+        <div class="form-group">
+
+            <label for="f-certificate-name">
+                दाखल्याचे नाव
+            </label>
+
+            <select
+                id="f-certificate-name"
+            >
+
+                <option value="">
+                    दाखला निवडा
+                </option>
+
+                <option>
+                    विवाह नोंद दाखला
+                </option>
+
+                <option>
+                    रहिवासी दाखला
+                </option>
+
+                <option>
+                    उत्पन्नाचा दाखला
+                </option>
+
+                <option>
+                    जन्म दाखला
+                </option>
+
+                <option>
+                    मृत्यू दाखला
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- Applicant -->
+
+        <div class="form-group">
+
+            <label for="f-applicant">
+                दाखला मागणी केलेल्या व्यक्तीचे नाव
+            </label>
+
+            <input
+                type="text"
+                id="f-applicant"
+                placeholder="उदा. किशोर रामजी सूर्यवंशी"
+            >
+
+        </div>
+
+
+        <!-- Gramsevak -->
+
+        <div class="form-group">
+
+            <label for="f-gramsevak">
+                ग्रामसेवकाचे नाव
+            </label>
+
+            <input
+                type="text"
+                id="f-gramsevak"
+                placeholder="उदा. के बाव सूर्यवंशी"
+            >
+
+        </div>
+
+
+        <!-- Date -->
+
+        <div class="form-group">
+
+            <label for="f-date">
+                दाखला वितरण दिनांक
+            </label>
+
+            <input
+                type="date"
+                id="f-date"
+            >
+
+        </div>
+
+
+        <button
+            class="generate-certificate-btn"
+            id="generate-certificate-btn"
+        >
+            दाखला तयार करा
+        </button>
+
+    </div>
+
+
+    <!-- =================================================
+         CERTIFICATE VIEW
+         
+         HIDDEN UNTIL FORM IS SUBMITTED
+    ================================================== -->
+
+    <div
+        class="certificate-view"
+        id="certificate-view"
+    >
+
+        <div class="certificate-card">
+
+            <div class="cert-row">
+
+                दाखला क्रमांक -
+
+                <span id="cert-id"></span>
+
+            </div>
+
+
+            <div class="cert-row">
+
+                दाखल्याचे नाव -
+
+                <span id="cert-name"></span>
+
+            </div>
+
+
+            <div class="cert-row long">
+
+                दाखला मागणी केलेल्या व्यक्तीचे नाव -
+
+                <span id="applicant-name"></span>
+
+            </div>
+
+
+            <div class="cert-row">
+
+                ग्रामसेवकाचे नाव -
+
+                <span id="gramsevak-name"></span>
+
+            </div>
+
+
+            <div class="cert-row">
+
+                दाखला वितरण दिनांक -
+
+                <span id="cert-date"></span>
+
+            </div>
+
+        </div>
+
+
+        <div class="note">
+
+            * वरील दाखला ग्रामपंचायत दहाणे, तालुका - वागळा,
+            जिल्हा - नाशिक यांनी स्वतः वितरित केलेला आहे.
+
+        </div>
+
+
+        <!-- ACTIONS -->
+
+        <div class="action-buttons">
+
+            <button
+                class="back-btn"
+                id="back-btn"
+            >
+                Back
+            </button>
+
+
+            <button
+                class="qr-open-btn"
+                id="qr-open-btn"
+            >
+                Generate QR
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             QR
+             
+             HIDDEN UNTIL USER CLICKS GENERATE QR
+        ================================================== -->
+
+        <div
+            class="qr-section"
+            id="qr-section"
+        >
+
+            <div class="qr-title">
+                दाखला सत्यापन QR Code
+            </div>
+
+
+            <div id="qrcode"></div>
+
+
+            <code id="qr-url"></code>
+
+
+            <div class="qr-buttons">
+
+                <button
+                    class="qr-btn"
+                    id="generate-qr-btn"
+                >
+                    Generate QR
+                </button>
+
+
+                <button
+                    class="qr-btn"
+                    id="download-qr-btn"
+                >
+                    Download QR
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- VERIFY -->
+
+        <div
+            class="verify-panel"
+            id="verify-panel"
+        >
+
+            <input
+                class="verify-input"
+                id="verify-id"
+                placeholder="दाखला क्रमांक"
+            >
+
+
+            <button
+                class="verify-btn"
+                id="verify-btn"
+            >
+                Verify
+            </button>
+
+
+            <div
+                class="verify-result"
+                id="verify-result"
+            ></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   CURRENT CERTIFICATE
+===================================================== */
+
+let currentCertificate = null;
+
+
+/* =====================================================
+   STORAGE
+===================================================== */
+
+async function storageSet(key, value) {
+
+    /*
+       Use original shared storage if available.
+    */
+
+    if (
+        window.storage &&
+        typeof window.storage.set === "function"
+    ) {
+
+        return await window.storage.set(
+            key,
+            value,
+            true
+        );
+
+    }
+
+
+    /*
+       Normal browser fallback.
+    */
+
+    localStorage.setItem(
+        key,
+        value
+    );
+
+    return {
+        ok: true
+    };
+
+}
+
+
+async function storageGet(key) {
+
+    if (
+        window.storage &&
+        typeof window.storage.get === "function"
+    ) {
+
+        return await window.storage.get(
+            key,
+            true
+        );
+
+    }
+
+
+    const value =
+        localStorage.getItem(key);
+
+
+    if (value === null) {
+
+        throw new Error(
+            "Certificate not found"
+        );
+
+    }
+
+
+    return {
+        value: value
+    };
+
+}
+
+
+/* =====================================================
+   GENERATE ID
+===================================================== */
+
+function generateCertificateId() {
+
+    const chars =
+        "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+
+    let id = "";
+
+    for (
+        let i = 0;
+        i < 10;
+        i++
+    ) {
+
+        id += chars[
+            Math.floor(
+                Math.random() * chars.length
+            )
+        ];
+
+    }
+
+    return "BP-" + id;
+
+}
+
+
+/* =====================================================
+   DATE
+===================================================== */
+
+function formatDate(date) {
+
+    if (!date) {
+        return "";
+    }
+
+    const parts =
+        date.split("-");
+
+    if (parts.length !== 3) {
+        return date;
+    }
+
+    return (
+        parts[2] +
+        "-" +
+        parts[1] +
+        "-" +
+        parts[0]
+    );
+
+}
+
+
+/* =====================================================
+   GENERATE CERTIFICATE
+===================================================== */
+
+async function generateCertificate() {
+
+    const inputId =
+        document
+            .getElementById("f-id")
+            .value
+            .trim();
+
+
+    const certificateName =
+        document
+            .getElementById("f-certificate-name")
+            .value
+            .trim();
+
+
+    const applicant =
+        document
+            .getElementById("f-applicant")
+            .value
+            .trim();
+
+
+    const gramsevak =
+        document
+            .getElementById("f-gramsevak")
+            .value
+            .trim();
+
+
+    const date =
+        document
+            .getElementById("f-date")
+            .value;
+
+
+    /* =================================================
+       VALIDATION
+    ================================================== */
+
+    if (!inputId) {
+
+        alert(
+            "कृपया दाखला क्रमांक भरा."
+        );
+
+        return;
+
+    }
+
+
+    if (!certificateName) {
+
+        alert(
+            "कृपया दाखल्याचे नाव निवडा."
+        );
+
+        return;
+
+    }
+
+
+    if (!applicant) {
+
+        alert(
+            "कृपया व्यक्तीचे नाव भरा."
+        );
+
+        return;
+
+    }
+
+
+    if (!gramsevak) {
+
+        alert(
+            "कृपया ग्रामसेवकाचे नाव भरा."
+        );
+
+        return;
+
+    }
+
+
+    if (!date) {
+
+        alert(
+            "कृपया दाखला वितरण दिनांक निवडा."
+        );
+
+        return;
+
+    }
+
+
+    /* =================================================
+       CREATE RECORD
+    ================================================== */
+
+    currentCertificate = {
+
+        id: inputId,
+
+        name: certificateName,
+
+        applicant: applicant,
+
+        gramsevak: gramsevak,
+
+        date: formatDate(date),
+
+        issuedAt:
+            new Date().toISOString()
+
+    };
+
+
+    /* =================================================
+       SAVE
+    ================================================== */
+
+    try {
+
+        await storageSet(
+            "cert:" + inputId,
+            JSON.stringify(
+                currentCertificate
+            )
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        alert(
+            "दाखला save करताना समस्या आली."
+        );
+
+        return;
+
+    }
+
+
+    /* =================================================
+       PUT DATA INTO CERTIFICATE VIEW
+    ================================================== */
+
+    document.getElementById(
+        "cert-id"
+    ).textContent =
+        currentCertificate.id;
+
+
+    document.getElementById(
+        "cert-name"
+    ).textContent =
+        currentCertificate.name;
+
+
+    document.getElementById(
+        "applicant-name"
+    ).textContent =
+        currentCertificate.applicant;
+
+
+    document.getElementById(
+        "gramsevak-name"
+    ).textContent =
+        currentCertificate.gramsevak;
+
+
+    document.getElementById(
+        "cert-date"
+    ).textContent =
+        currentCertificate.date;
+
+
+    /* =================================================
+       HIDE FORM
+    ================================================== */
+
+    document
+        .getElementById("form-panel")
+        .style.display = "none";
+
+
+    /* =================================================
+       SHOW CERTIFICATE
+    ================================================== */
+
+    document
+        .getElementById("certificate-view")
+        .classList.add("show");
+
+
+    /*
+       QR is deliberately NOT generated here.
+
+       User must click Generate QR.
+    */
+
+
+    document
+        .getElementById("qr-section")
+        .classList.remove("show");
+
+
+    /*
+       Scroll to certificate.
+    */
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =====================================================
+   GENERATE QR
+===================================================== */
+
+function generateQR() {
+
+    if (!currentCertificate) {
+
+        alert(
+            "आधी दाखला तयार करा."
+        );
+
+        return;
+
+    }
+
+
+    if (
+        typeof QRCode === "undefined"
+    ) {
+
+        alert(
+            "QR library load झाली नाही. Internet connection तपासा."
+        );
+
+        return;
+
+    }
+
+
+    const qrContainer =
+        document.getElementById(
+            "qrcode"
+        );
+
+
+    /*
+       Remove old QR.
+    */
+
+    qrContainer.innerHTML = "";
+
+
+    /*
+       Verification URL.
+
+       In production replace this with
+       your real verification URL.
+    */
+
+    const verifyUrl =
+        window.location.origin +
+        window.location.pathname +
+        "?verify=" +
+        encodeURIComponent(
+            currentCertificate.id
+        );
+
+
+    /*
+       Show URL.
+    */
+
+    document.getElementById(
+        "qr-url"
+    ).textContent =
+        verifyUrl;
+
+
+    /*
+       Generate actual QR.
+    */
+
+    new QRCode(
+        qrContainer,
+        {
+
+            text: verifyUrl,
+
+            width: 124,
+
+            height: 124,
+
+            colorDark: "#000000",
+
+            colorLight: "#ffffff",
+
+            correctLevel:
+                QRCode.CorrectLevel.H
+
+        }
+    );
+
+
+    /*
+       Show QR section.
+    */
+
+    document
+        .getElementById(
+            "qr-section"
+        )
+        .classList.add(
+            "show"
+        );
+
+}
+
+
+/* =====================================================
+   DOWNLOAD QR
+===================================================== */
+
+function downloadQR() {
+
+    const canvas =
+        document.querySelector(
+            "#qrcode canvas"
+        );
+
+
+    const image =
+        document.querySelector(
+            "#qrcode img"
+        );
+
+
+    if (!canvas && !image) {
+
+        alert(
+            "आधी Generate QR वर क्लिक करा."
+        );
+
+        return;
+
+    }
+
+
+    const link =
+        document.createElement("a");
+
+
+    link.download =
+        "dakhla-" +
+        currentCertificate.id +
+        "-QR.png";
+
+
+    if (canvas) {
+
+        link.href =
+            canvas.toDataURL(
+                "image/png"
+            );
+
+    }
+
+    else {
+
+        link.href =
+            image.src;
+
+    }
+
+
+    document.body.appendChild(
+        link
+    );
+
+
+    link.click();
+
+
+    document.body.removeChild(
+        link
+    );
+
+}
+
+
+/* =====================================================
+   BACK
+===================================================== */
+
+function goBackToForm() {
+
+    /*
+       Hide certificate.
+    */
+
+    document
+        .getElementById(
+            "certificate-view"
+        )
+        .classList.remove(
+            "show"
+        );
+
+
+    /*
+       Hide QR.
+    */
+
+    document
+        .getElementById(
+            "qr-section"
+        )
+        .classList.remove(
+            "show"
+        );
+
+
+    /*
+       Show form again.
+    */
+
+    document
+        .getElementById(
+            "form-panel"
+        )
+        .style.display = "block";
+
+
+    /*
+       Clear QR.
+    */
+
+    document
+        .getElementById(
+            "qrcode"
+        )
+        .innerHTML = "";
+
+
+    document
+        .getElementById(
+            "qr-url"
+        )
+        .textContent = "";
+
+
+    currentCertificate = null;
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =====================================================
+   VERIFY
+===================================================== */
+
+async function verifyCertificate() {
+
+    const id =
+        document
+            .getElementById(
+                "verify-id"
+            )
+            .value
+            .trim();
+
+
+    const result =
+        document.getElementById(
+            "verify-result"
+        );
+
+
+    if (!id) {
+
+        result.innerHTML =
+            "कृपया दाखला क्रमांक टाका.";
+
+        return;
+
+    }
+
+
+    try {
+
+        const response =
+            await storageGet(
+                "cert:" + id
+            );
+
+
+        const record =
+            JSON.parse(
+                response.value
+            );
+
+
+        result.innerHTML = `
+
+            <div
+                style="
+                    color:#16813b;
+                    font-weight:700;
+                    margin-bottom:5px;
+                "
+            >
+                ✓ दाखला सत्यापित आहे
+            </div>
+
+            दाखला क्रमांक -
+            ${record.id}
+
+            <br>
+
+            दाखल्याचे नाव -
+            ${record.name}
+
+            <br>
+
+            व्यक्तीचे नाव -
+            ${record.applicant}
+
+            <br>
+
+            ग्रामसेवक -
+            ${record.gramsevak}
+
+            <br>
+
+            वितरण दिनांक -
+            ${record.date}
+
+        `;
+
+    }
+
+    catch (error) {
+
+        result.innerHTML = `
+
+            <div
+                style="
+                    color:#c62828;
+                    font-weight:700;
+                "
+            >
+                ✕ दाखला सापडला नाही
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+/* =====================================================
+   BUTTON EVENTS
+===================================================== */
+
+document
+    .getElementById(
+        "generate-certificate-btn"
+    )
+    .addEventListener(
+        "click",
+        generateCertificate
+    );
+
+
+document
+    .getElementById(
+        "qr-open-btn"
+    )
+    .addEventListener(
+        "click",
+        generateQR
+    );
+
+
+document
+    .getElementById(
+        "generate-qr-btn"
+    )
+    .addEventListener(
+        "click",
+        generateQR
+    );
+
+
+document
+    .getElementById(
+        "download-qr-btn"
+    )
+    .addEventListener(
+        "click",
+        downloadQR
+    );
+
+
+document
+    .getElementById(
+        "back-btn"
+    )
+    .addEventListener(
+        "click",
+        goBackToForm
+    );
+
+
+document
+    .getElementById(
+        "verify-btn"
+    )
+    .addEventListener(
+        "click",
+        verifyCertificate
+    );
+
+
+/* =====================================================
+   ENTER KEY SUPPORT
+===================================================== */
+
+document
+    .querySelectorAll(
+        "#form-panel input"
+    )
+    .forEach(function(input) {
+
+        input.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key === "Enter"
+                ) {
+
+                    generateCertificate();
+
+                }
+
+            }
+        );
+
+    });
+
+
+</script>
+
+</body>
+</html>
