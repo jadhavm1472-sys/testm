@@ -1747,6 +1747,96 @@ document
 
     });
 
+/* =====================================================
+   AUTO VERIFY FROM QR URL
+   ===================================================== */
+
+window.addEventListener("DOMContentLoaded", async function () {
+
+    const params = new URLSearchParams(window.location.search);
+    const verifyId = params.get("verify");
+
+    if (!verifyId) {
+        return;
+    }
+
+    try {
+
+        const response = await storageGet(
+            "cert:" + verifyId
+        );
+
+        const record = JSON.parse(response.value);
+
+        // Hide the form
+        document.getElementById("form-panel").style.display = "none";
+
+        // Show certificate
+        document
+            .getElementById("certificate-view")
+            .classList.add("show");
+
+        // Fill certificate data
+        document.getElementById("cert-id").textContent =
+            record.id;
+
+        document.getElementById("cert-name").textContent =
+            record.name;
+
+        document.getElementById("applicant-name").textContent =
+            record.applicant;
+
+        document.getElementById("gramsevak-name").textContent =
+            record.gramsevak;
+
+        document.getElementById("cert-date").textContent =
+            record.date;
+
+        // Hide QR section on verification page
+        document
+            .getElementById("qr-section")
+            .classList.remove("show");
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    } catch (error) {
+
+        console.error(error);
+
+        document.getElementById("form-panel").style.display = "none";
+
+        const certificateView =
+            document.getElementById("certificate-view");
+
+        certificateView.classList.add("show");
+
+        certificateView.innerHTML = `
+            <div class="certificate-card">
+                <div style="
+                    text-align:center;
+                    padding:30px 10px;
+                    color:#c62828;
+                    font-weight:700;
+                ">
+                    ✕ दाखला सापडला नाही
+                    <br>
+                    <span style="
+                        font-size:10px;
+                        font-weight:400;
+                        color:#555;
+                    ">
+                        हा QR Code वैध नाही किंवा दाखला उपलब्ध नाही.
+                    </span>
+                </div>
+            </div>
+        `;
+
+    }
+
+});
 
 </script>
 
