@@ -1,95 +1,135 @@
 @import url(
-    'https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap'
+'https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap'
 );
 
 
 /* ========================================
-   GLOBAL
+  GLOBAL
 ======================================== */
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+margin: 0;
+padding: 0;
+box-sizing: border-box;
 }
 
 
 body {
 
-    font-family:
-        "Noto Sans Devanagari",
-        Arial,
-        sans-serif;
+font-family:
+"Noto Sans Devanagari",
+Arial,
+sans-serif;
 
-    background:
-        #f3f5f8;
+background:
+#f3f5f8;
 
-    color:
-        #333;
+color:
+#333;
 
 }
 
 
 /* ========================================
-   CERTIFICATE PAGE
+  CERTIFICATE PAGE
 ======================================== */
 
 .page {
 
-    width:
-        100%;
+width:
+100%;
 
-    max-width:
-        420px;
+max-width:
+420px;
 
-    min-height:
-        100vh;
+min-height:
+100vh;
 
-    margin:
-        0 auto;
+margin:
+0 auto;
 
-    background:
-        #ffffff;
+background:
+#ffffff;
 
-    padding:
-        25px 18px;
+padding:
+25px 18px;
 
 }
 
 
 /* ========================================
- /* ========================================
-   AAPLE SARKAR LOGO
+  LOGO
 ======================================== */
 
 .logo-container {
 
-    width: 100%;
+display:
+flex;
 
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    margin-top: 20px;
-
-    margin-bottom: 15px;
+justify-content:
+center;
 
 }
 
 
-.aaple-sarkar-logo {
+.logo-box {
 
-    width: 80px;
+width:
+82px;
 
-    height: auto;
+height:
+54px;
 
-    display: block;
+border:
+1px solid #9ab0a0;
+
+display:
+flex;
+
+align-items:
+center;
+
+justify-content:
+center;
 
 }
+
+
+.logo-text {
+
+text-align:
+center;
+
+font-weight:
+700;
+
+line-height:
+15px;
+
+font-size:
+13px;
+
+}
+
+
+.logo-green {
+
+color:
+#4d876f;
+
+}
+
+
+.logo-orange {
+
+color:
+#e57c38;
+
+}
+
+
 /* ========================================
-   TITLE
+  TITLE
 ======================================== */
 
 /* ========================================
@@ -98,27 +138,47 @@ body {
 
 .title-section {
 
+    margin-top:
+        18px;
     width: 100%;
 
+}
     margin-top: 18px;
 
     display: flex;
 
+.title {
     justify-content: center;
 
+    display:
+        flex;
 }
 
+    align-items:
+        center;
 
+    justify-content:
+        center;
 /* Icon + text container */
 
+    gap:
+        6px;
 .certificate-title {
 
+    color:
+        #3f6282;
     display: flex;
 
+    font-size:
+        17px;
     align-items: center;
 
+    font-weight:
+        700;
     justify-content: center;
 
+    text-align:
+        center;
     gap: 4px;
 
 }
@@ -130,6 +190,8 @@ body {
 
 .certificate-icon {
 
+    font-size:
+        24px;
     width: 32px;
 
     height: 32px;
@@ -176,381 +238,381 @@ body {
 
 
 /* ========================================
-   LOCATION
+  LOCATION
 ======================================== */
 
 .subtitle {
 
-    margin-top:
-        8px;
+margin-top:
+8px;
 
-    text-align:
-        center;
+text-align:
+center;
 
-    font-size:
-        13px;
+font-size:
+13px;
 
-    line-height:
-        22px;
+line-height:
+22px;
 
-    color:
-        #444;
+color:
+#444;
 
 }
 
 
 /* ========================================
-   CERTIFICATE CARD
+  CERTIFICATE CARD
 ======================================== */
 
 .certificate-card {
 
-    margin-top:
-        30px;
+margin-top:
+30px;
 
-    padding:
-        8px 16px;
+padding:
+8px 16px;
 
-    background:
-        white;
+background:
+white;
 
-    box-shadow:
-        0 4px 20px rgba(
-            0,
-            0,
-            0,
-            0.06
-        );
+box-shadow:
+0 4px 20px rgba(
+0,
+0,
+0,
+0.06
+);
 
 }
 
 
 .detail-row {
 
-    padding:
-        9px 0;
+padding:
+9px 0;
 
-    border-bottom:
-        1px solid #dddddd;
+border-bottom:
+1px solid #dddddd;
 
-    font-size:
-        13px;
+font-size:
+13px;
 
-    line-height:
-        20px;
+line-height:
+20px;
 
 }
 
 
 .detail-row:last-child {
 
-    border-bottom:
-        none;
+border-bottom:
+none;
 
 }
 
 
 .label {
 
-    font-weight:
-        500;
+font-weight:
+500;
 
 }
 
 
 .value {
 
-    font-weight:
-        500;
+font-weight:
+500;
 
 }
 
 
 /* ========================================
-   VERIFICATION MESSAGE
+  VERIFICATION MESSAGE
 ======================================== */
 
 .message {
 
-    margin-top:
-        65px;
+margin-top:
+65px;
 
-    text-align:
-        center;
+text-align:
+center;
 
-    font-size:
-        13px;
+font-size:
+13px;
 
-    line-height:
-        22px;
+line-height:
+22px;
 
-    color:
-        #444;
+color:
+#444;
 
 }
 
 
 /* ========================================
-   BACK BUTTON
+  BACK BUTTON
 ======================================== */
 
 .button-container {
 
-    margin-top:
-        15px;
+margin-top:
+15px;
 
 }
 
 
 .back-btn {
 
-    background:
-        #3d78bf;
+background:
+#3d78bf;
 
-    color:
-        white;
+color:
+white;
 
-    border:
-        none;
+border:
+none;
 
-    padding:
-        7px 13px;
+padding:
+7px 13px;
 
-    font-size:
-        13px;
+font-size:
+13px;
 
-    border-radius:
-        2px;
+border-radius:
+2px;
 
-    cursor:
-        pointer;
+cursor:
+pointer;
 
 }
 
 
 .back-btn:hover {
 
-    background:
-        #2f639e;
+background:
+#2f639e;
 
 }
 
 
 /* ========================================
-   INVALID CERTIFICATE
+  INVALID CERTIFICATE
 ======================================== */
 
 .invalid-certificate {
 
-    text-align:
-        center;
+text-align:
+center;
 
-    padding:
-        30px 10px;
+padding:
+30px 10px;
 
 }
 
 
 .invalid-icon {
 
-    font-size:
-        45px;
+font-size:
+45px;
 
 }
 
 
 .invalid-certificate h2 {
 
-    color:
-        #d64545;
+color:
+#d64545;
 
-    margin:
-        10px 0;
+margin:
+10px 0;
 
 }
 
 
 .invalid-certificate p {
 
-    font-size:
-        14px;
+font-size:
+14px;
 
 }
 
 
 /* ========================================
-   QR GENERATOR PAGE
+  QR GENERATOR PAGE
 ======================================== */
 
 .qr-page {
 
-    min-height:
-        100vh;
+min-height:
+100vh;
 
-    display:
-        flex;
+display:
+flex;
 
-    align-items:
-        center;
+align-items:
+center;
 
-    justify-content:
-        center;
+justify-content:
+center;
 
-    padding:
-        20px;
+padding:
+20px;
 
 }
 
 
 .qr-card {
 
-    width:
-        100%;
+width:
+100%;
 
-    max-width:
-        450px;
+max-width:
+450px;
 
-    background:
-        white;
+background:
+white;
 
-    padding:
-        30px;
+padding:
+30px;
 
-    border-radius:
-        10px;
+border-radius:
+10px;
 
-    box-shadow:
-        0 5px 25px rgba(
-            0,
-            0,
-            0,
-            0.1
-        );
+box-shadow:
+0 5px 25px rgba(
+0,
+0,
+0,
+0.1
+);
 
 }
 
 
 .qr-card h2 {
 
-    text-align:
-        center;
+text-align:
+center;
 
-    margin-bottom:
-        10px;
+margin-bottom:
+10px;
 
 }
 
 
 .qr-card p {
 
-    text-align:
-        center;
+text-align:
+center;
 
-    margin-bottom:
-        20px;
+margin-bottom:
+20px;
 
 }
 
 
 .qr-card label {
 
-    display:
-        block;
+display:
+block;
 
-    margin-bottom:
-        8px;
+margin-bottom:
+8px;
 
 }
 
 
 .qr-card select {
 
-    width:
-        100%;
+width:
+100%;
 
-    padding:
-        10px;
+padding:
+10px;
 
-    margin-bottom:
-        15px;
+margin-bottom:
+15px;
 
 }
 
 
 .qr-card button {
 
-    width:
-        100%;
+width:
+100%;
 
-    padding:
-        12px;
+padding:
+12px;
 
-    border:
-        none;
+border:
+none;
 
-    background:
-        #3973b9;
+background:
+#3973b9;
 
-    color:
-        white;
+color:
+white;
 
-    cursor:
-        pointer;
+cursor:
+pointer;
 
-    border-radius:
-        4px;
+border-radius:
+4px;
 
-    font-size:
-        15px;
+font-size:
+15px;
 
 }
 
 
 .qr-card button:hover {
 
-    background:
-        #2d5f98;
+background:
+#2d5f98;
 
 }
 
 
 #qrcode {
 
-    display:
-        flex;
+display:
+flex;
 
-    justify-content:
-        center;
+justify-content:
+center;
 
-    margin-top:
-        30px;
+margin-top:
+30px;
 
 }
 
 
 #qrUrl {
 
-    margin-top:
-        20px;
+margin-top:
+20px;
 
-    word-break:
-        break-word;
+word-break:
+break-word;
 
 }
 
 
 .url-box {
 
-    padding:
-        10px;
+padding:
+10px;
 
-    background:
-        #f2f4f6;
+background:
+#f2f4f6;
 
-    border:
-        1px solid #ddd;
+border:
+1px solid #ddd;
 
-    font-size:
-        12px;
+font-size:
+12px;
 
 }
