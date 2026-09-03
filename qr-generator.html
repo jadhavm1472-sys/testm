@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+
+    <title>Generate Certificate QR</title>
+
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+
+    <!-- QR CODE LIBRARY -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+
+</head>
+
+
+<body>
+
+
+    <div class="qr-page">
+
+
+        <div class="qr-card">
+
+
+            <h2>
+                Certificate QR Generator
+            </h2>
+
+
+            <p>
+                Select a certificate to generate its QR Code.
+            </p>
+
+
+
+            <label for="certificateSelect">
+
+                Select Certificate
+
+            </label>
+
+
+            <select id="certificateSelect">
+
+            </select>
+
+
+
+            <button id="generateQRBtn">
+
+                Generate QR Code
+
+            </button>
+
+
+
+            <div id="qrcode">
+
+            </div>
+
+
+
+            <div id="qrUrl">
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- Static Certificate Data -->
+
+    <script src="js/certificates.js"></script>
+
+
+    <!-- QR Generator Logic -->
+
+    <script src="js/qr-generator.js"></script>
+
+
+</body>
+
+</html>
