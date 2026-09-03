@@ -59,70 +59,63 @@ body {
 
 /* ========================================
    LOGO
-======================================== */
 .logo-container {
 
-    display:
-        flex;
+    width: 100%;
 
-    justify-content:
-        center;
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    margin-bottom: 15px;
 
 }
 
 
 .logo-box {
 
-    width:
-        82px;
+    width: 80px;
 
-    height:
-        54px;
+    height: 54px;
 
-    border:
-        1px solid #9ab0a0;
+    border: 1px solid #8caf9b;
 
-    display:
-        flex;
+    display: flex;
 
-    align-items:
-        center;
+    align-items: center;
 
-    justify-content:
-        center;
+    justify-content: center;
+
+    background: #ffffff;
 
 }
 
 
 .logo-text {
 
-    text-align:
-        center;
+    text-align: center;
 
-    font-weight:
-        700;
+    line-height: 15px;
 
-    line-height:
-        15px;
+    font-size: 13px;
 
-    font-size:
-        13px;
+    font-weight: 700;
 
 }
 
 
 .logo-green {
 
-    color:
-        #4d876f;
+    color: #23845d;
 
 }
 
 
 .logo-orange {
 
-    color:
-        #e57c38;
+    color: #e47b38;
 
 }
 
