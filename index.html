@@ -1,312 +1,41 @@
 <!DOCTYPE html>
 <html lang="mr">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>प्रमाणपत्र सत्यापन</title>
 
-    <!-- Marathi Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 
-    <style>
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: "Noto Sans Devanagari", sans-serif;
-            background-color: #f5f6f8;
-            color: #343434;
-        }
-
-        .page {
-            width: 100%;
-            max-width: 420px;
-            min-height: 100vh;
-            margin: auto;
-            background: #ffffff;
-            padding: 25px 18px 20px;
-            position: relative;
-        }
-
-        /* ================= LOGO ================= */
-
-        .logo-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 15px;
-        }
-
-        .logo-box {
-            width: 80px;
-            height: 54px;
-            border: 1px solid #9db5a5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: white;
-        }
-
-        .logo-text {
-            text-align: center;
-            line-height: 16px;
-            font-weight: 700;
-            font-size: 13px;
-        }
-
-        .logo-text .green {
-            color: #4d8b72;
-        }
-
-        .logo-text .orange {
-            color: #e67c36;
-        }
-
-        /* ================= TITLE ================= */
-
-        .title-section {
-            text-align: center;
-            margin-top: 8px;
-        }
-
-        .title {
-            font-size: 18px;
-            font-weight: 700;
-            color: #385a7b;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .certificate-icon {
-            width: 27px;
-            height: 27px;
-            border: 2px solid #526f90;
-            border-radius: 3px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .certificate-icon::before {
-            content: "";
-            position: absolute;
-            width: 11px;
-            height: 14px;
-            border: 2px solid #526f90;
-            left: 6px;
-            top: 5px;
-        }
-
-        .certificate-icon::after {
-            content: "✓";
-            position: absolute;
-            font-size: 10px;
-            color: #526f90;
-            right: -7px;
-            bottom: -5px;
-            background: white;
-            border: 1px solid #526f90;
-            border-radius: 50%;
-            width: 12px;
-            height: 12px;
-            line-height: 10px;
-        }
-
-        /* ================= SUBTITLE ================= */
-
-        .subtitle {
-            text-align: center;
-            margin-top: 8px;
-            font-size: 13px;
-            font-weight: 500;
-            line-height: 22px;
-            color: #444;
-        }
-
-        /* ================= CERTIFICATE CARD ================= */
-
-        .certificate-card {
-            margin-top: 28px;
-            padding: 12px 18px;
-            background: #ffffff;
-            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
-        }
-
-        .detail-row {
-            padding: 9px 0;
-            border-bottom: 1px solid #dddddd;
-            font-size: 14px;
-            line-height: 20px;
-        }
-
-        .detail-row:last-child {
-            border-bottom: none;
-        }
-
-        .label {
-            font-weight: 500;
-            color: #333;
-        }
-
-        .value {
-            font-weight: 500;
-        }
-
-        /* ================= BOTTOM MESSAGE ================= */
-
-        .message {
-            margin-top: 65px;
-            text-align: center;
-            font-size: 13px;
-            line-height: 22px;
-            font-weight: 500;
-            color: #444;
-        }
-
-        /* ================= BACK BUTTON ================= */
-
-        .button-container {
-            margin-top: 14px;
-        }
-
-        .back-btn {
-            background-color: #3973b9;
-            color: white;
-            border: none;
-            padding: 7px 13px;
-            font-size: 13px;
-            border-radius: 2px;
-            cursor: pointer;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
-        }
-
-        .back-btn:hover {
-            background-color: #2f629e;
-        }
-
-        /* ================= MOBILE RESPONSIVE ================= */
-
-        @media (max-width: 480px) {
-
-            .page {
-                padding-left: 18px;
-                padding-right: 18px;
-            }
-
-            .title {
-                font-size: 17px;
-            }
-
-            .detail-row {
-                font-size: 13px;
-            }
-
-        }
-
-    </style>
 </head>
 
 <body>
 
-    <div class="page">
+    <div class="home-page">
 
-        <!-- Logo -->
-        <div class="logo-container">
-            <div class="logo-box">
-                <div class="logo-text">
-                    <div class="green">आपले</div>
-                    <div class="orange">सरकार</div>
-                </div>
-            </div>
-        </div>
+        <div class="home-card">
 
+            <h1>प्रमाणपत्र सत्यापन प्रणाली</h1>
 
-        <!-- Title -->
-        <div class="title-section">
+            <p>
+                QR कोड स्कॅन करून प्रमाणपत्र सत्यापित करा.
+            </p>
 
-            <div class="title">
-                <span class="certificate-icon"></span>
-                प्रमाणपत्र (दाखला) सत्यापन
-            </div>
+            <a href="qr-generator.html"
+               class="home-btn">
 
-        </div>
+                QR Code Generate करा
 
-
-        <!-- Location -->
-        <div class="subtitle">
-            ग्रामपंचायत - दहेगाव , तालुका - बागलाण , जिल्हा -<br>
-            नाशिक
-        </div>
-
-
-        <!-- Certificate Details -->
-        <div class="certificate-card">
-
-            <div class="detail-row">
-                <span class="label">दाखला क्रमांक - </span>
-                <span class="value">४५०२४९५००९६</span>
-            </div>
-
-            <div class="detail-row">
-                <span class="label">दाखल्याचे नाव - </span>
-                <span class="value">विवाह नोंद दाखला</span>
-            </div>
-
-            <div class="detail-row">
-                <span class="label">
-                    दाखला मागणी केलेल्या व्यक्तीचे नाव -<br>
-                    किशोर रामसिंग खडकी
-                </span>
-            </div>
-
-            <div class="detail-row">
-                <span class="label">
-                    ग्रामसेवकाचे नाव - के. वाय खडकी
-                </span>
-            </div>
-
-            <div class="detail-row">
-                <span class="label">
-                    दाखला वितरण दिनांक- २५-०८-२०२६
-                </span>
-            </div>
-
-        </div>
-
-
-        <!-- Verification Message -->
-        <div class="message">
-
-            * वरील दाखला ग्रामपंचायत दहेगाव , तालुका - बागलाण , जिल्हा<br>
-            - नाशिक यांचे वतीने वितरित केला आहे.
-
-        </div>
-
-
-        <!-- Back Button -->
-        <div class="button-container">
-
-            <button class="back-btn" onclick="goBack()">
-                Back
-            </button>
+            </a>
 
         </div>
 
     </div>
 
-
-    <script>
-
-        function goBack() {
-            window.history.back();
-        }
-
-    </script>
-
 </body>
+
 </html>
