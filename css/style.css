@@ -60,40 +60,71 @@ body {
 /* ========================================
    LOGO
 ======================================== */
-
-/* ========================================
-   AAPLE SARKAR LOGO
-======================================== */
-
 .logo-container {
 
-    width: 100%;
+    display:
+        flex;
 
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    margin-top: 0;
-
-    margin-bottom: 15px;
+    justify-content:
+        center;
 
 }
 
 
-.aaple-sarkar-logo {
+.logo-box {
 
-    width: 80px;
+    width:
+        82px;
 
-    height: auto;
+    height:
+        54px;
 
-    display: block;
+    border:
+        1px solid #9ab0a0;
 
-    object-fit: contain;
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
 
 }
 
+
+.logo-text {
+
+    text-align:
+        center;
+
+    font-weight:
+        700;
+
+    line-height:
+        15px;
+
+    font-size:
+        13px;
+
+}
+
+
+.logo-green {
+
+    color:
+        #4d876f;
+
+}
+
+
+.logo-orange {
+
+    color:
+        #e57c38;
+
+}
 
 /* ========================================
    TITLE
